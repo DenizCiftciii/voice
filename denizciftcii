@@ -2,29 +2,21 @@ local Players = game:GetService("Players")
 local TeleportService = game:GetService("TeleportService")
 local player = Players.LocalPlayer
 
--- GUI ana ekran
 local screenGui = Instance.new("ScreenGui")
 screenGui.Name = "VoiceChatGui"
 screenGui.ResetOnSpawn = false
 screenGui.Parent = player:WaitForChild("PlayerGui")
 
--- Arka plan kutusu
 local frame = Instance.new("Frame")
 frame.Size = UDim2.new(0, 300, 0, 150)
 frame.Position = UDim2.new(0.5, -150, 0.5, -75)
 frame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
 frame.BackgroundTransparency = 0.2
 frame.BorderSizePixel = 0
+frame.Active = true
+frame.Draggable = true
 frame.Parent = screenGui
 
--- GUI'yi sürüklenebilir yapmak için
-local drag = Instance.new("UITextSizeConstraint")
-local dragging, offset
-
-frame.Active = true
-frame.Draggable = true -- klasik yöntem (eski clientlerde çalışır)
-
--- Başlık
 local title = Instance.new("TextLabel")
 title.Size = UDim2.new(1, 0, 0, 30)
 title.BackgroundTransparency = 1
@@ -34,7 +26,6 @@ title.Font = Enum.Font.GothamBold
 title.TextSize = 20
 title.Parent = frame
 
--- Kapatma tuşu (X)
 local closeButton = Instance.new("TextButton")
 closeButton.Size = UDim2.new(0, 30, 0, 30)
 closeButton.Position = UDim2.new(1, -35, 0, 5)
@@ -49,7 +40,6 @@ closeButton.MouseButton1Click:Connect(function()
 	screenGui:Destroy()
 end)
 
--- Teleport butonu
 local button = Instance.new("TextButton")
 button.Size = UDim2.new(0.8, 0, 0, 40)
 button.Position = UDim2.new(0.1, 0, 0.5, -20)
@@ -60,7 +50,6 @@ button.TextSize = 22
 button.Text = "Voice Chat Server"
 button.Parent = frame
 
--- Alt yazı (Created by)
 local credit = Instance.new("TextLabel")
 credit.Size = UDim2.new(1, 0, 0, 20)
 credit.Position = UDim2.new(0, 0, 1, -25)
@@ -71,7 +60,6 @@ credit.TextSize = 14
 credit.Text = "Created by DenizCiftci"
 credit.Parent = frame
 
--- Buton fonksiyonu
 button.MouseButton1Click:Connect(function()
 	TeleportService:Teleport(10676168923, player)
 end)
