@@ -1,11 +1,7 @@
-local Players = game:GetService("Players")
-local TeleportService = game:GetService("TeleportService")
-local player = Players.LocalPlayer
-
-local screenGui = Instance.new("ScreenGui")
-screenGui.Name = "VoiceChatGui"
-screenGui.ResetOnSpawn = false
-screenGui.Parent = player:WaitForChild("PlayerGui")
+local tpGui = Instance.new("ScreenGui")
+tpGui.Name = "DenizCiftciGui"
+tpGui.ResetOnSpawn = false
+tpGui.Parent = game:GetService("CoreGui")
 
 local frame = Instance.new("Frame")
 frame.Size = UDim2.new(0, 300, 0, 150)
@@ -15,7 +11,7 @@ frame.BackgroundTransparency = 0.2
 frame.BorderSizePixel = 0
 frame.Active = true
 frame.Draggable = true
-frame.Parent = screenGui
+frame.Parent = tpGui
 
 local title = Instance.new("TextLabel")
 title.Size = UDim2.new(1, 0, 0, 30)
@@ -37,7 +33,7 @@ closeButton.TextSize = 18
 closeButton.Parent = frame
 
 closeButton.MouseButton1Click:Connect(function()
-	screenGui:Destroy()
+	tpGui:Destroy()
 end)
 
 local button = Instance.new("TextButton")
@@ -61,5 +57,5 @@ credit.Text = "Created by DenizCiftci"
 credit.Parent = frame
 
 button.MouseButton1Click:Connect(function()
-	TeleportService:Teleport(10676168923, player)
+	game:GetService("TeleportService"):Teleport(10676168923, game:GetService("Players").LocalPlayer)
 end)
